@@ -1,11 +1,11 @@
 # ML-Classification-models-and-eval-metrics
-This project explores the effectiveness of different ML classification models on a diabeties dataset. The effectiveness of the models are verified through the evaluation metrics.
+This project explores the effectiveness of different ML classification models on a diabeties dataset. The effectiveness of the models are verified through the evaluation metrics. Early detection is preferred so Recall is prioritized.
 dataset link: https://www.kaggle.com/datasets/alexteboul/diabetes-health-indicators-dataset
 
 # a. Problem statement
 Despite the significant prevalence and economic burden of diabetes and prediabetes in the United States, a substantial portion of affected individuals remain undiagnosed and unaware of their condition. This lack of early detection prevents timely lifestyle interventions and effective medical treatments, leading to increased rates of severe complications, reduced quality of life, and substantial healthcare costs.
 
-Therefore, there is a critical need for a robust and accurate classification model that can leverage readily available survey data to identify individuals as healthy, prediabetic, or diabetic. Such a model, utilizing the Behavioral Risk Factor Surveillance System (BRFSS) 2015 dataset, would empower public health initiatives to proactively identify at-risk populations, facilitate early diagnosis, and ultimately mitigate the individual and societal impact of diabetes. The primary challenge lies in developing a model that can effectively handle the inherent class imbalance within the dataset while achieving high predictive performance across all three categories.
+Therefore, there is a critical need for a robust and accurate classification model that can leverage readily available survey data to identify individuals as healthy, prediabetic or diabetic. Such a model, utilizing the Behavioral Risk Factor Surveillance System (BRFSS) 2015 dataset, would empower public health initiatives to proactively identify at-risk populations, facilitate early diagnosis, and ultimately mitigate the individual and societal impact of diabetes. The primary challenge lies in developing a model that can effectively handle the inherent class imbalance within the dataset while achieving high predictive performance.
 
 # b. Dataset description
 Diabetes 012 Health Indicators - BRFSS 2015
@@ -14,23 +14,22 @@ I. General Information
 
     Dataset Name: Diabetes 012 Health Indicators - BRFSS 2015
     Source: Behavioral Risk Factor Surveillance System (BRFSS) 2015, collected annually by the Centers for Disease Control and Prevention (CDC). Dataset obtained from Kaggle.
-    Purpose: The BRFSS survey aims to monitor health-related risk behaviors, chronic health conditions, and the use of preventative services among U.S. adults. This specific cleaned dataset is curated for the purpose of classifying individuals into healthy, prediabetic, or diabetic categories based on self-reported health indicators.
+    Purpose: The BRFSS survey aims to monitor health-related risk behaviors, chronic health conditions, and the use of preventative services among U.S. adults. This specific cleaned dataset is curated for the purpose of classifying individuals into healthy, prediabetic/diabetic categories based on self-reported health indicators.
     Timeframe: Data collected for the year 2015.
     Geographical Scope: Represents adult residents of the United States.
 II. Dataset Structure and Size
 
-    File Format: CSV (diabetes_012_health_indicators_BRFSS2015.csv)
+    File Format: CSV (diabetes_binary_health_indicators_BRFSS2015.csv)
     Number of Records: 253,680 individual survey responses.
     Number of Features: 21 predictive features + 1 target variable.
 III. Variables Description
 
     Target Variable:
-        Diabetes_012: Self-reported diabetes status.
-        Data Type: Categorical (Ordinal, represented as Integer)
+        Diabetes_binary: Self-reported diabetes status.
+        Data Type: Categorical (Binary, represented as Integer)
         Possible Values:
             0: No diabetes or only during pregnancy
-            1: Prediabetes
-            2: Diabetes
+            1: Diabetes or Prediabetes
     Feature Variables:
         HighBP: High Blood Pressure (Binary: 0=No, 1=Yes)
         HighChol: High Cholesterol (Binary: 0=No, 1=Yes)
