@@ -21,7 +21,7 @@ uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type=["csv"])
 
 # List of available model files in the GitHub repo
 GITHUB_MODELS = [
-    "Logistic_Regression_model",
+    "Logistic_Regression_model.pkl",
     "Decision_Tree_model.pkl",
     "K_nearest_Neighbour_model.pkl",
     "Gaussian_Naive_Bayes_model.pkl",
