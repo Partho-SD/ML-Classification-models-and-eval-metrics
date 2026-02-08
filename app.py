@@ -39,7 +39,10 @@ with st.sidebar:
         '<button style="width:100%;">Download Example CSV</button></a>',
         unsafe_allow_html=True
     )
-
+# Use session state to persist the CSV file across reruns
+if 'github_csv_path' in st.session_state and st.session_state['github_csv_path']:
+    uploaded_file = st.session_state['github_csv_path']
+    
 # List of available model files in the GitHub repo
 GITHUB_MODELS = [
     "Logistic_Regression_model.pkl",
