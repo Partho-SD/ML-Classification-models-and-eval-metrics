@@ -16,22 +16,24 @@ st.set_page_config(page_title="Diabetes Classification App", layout="centered")
 st.markdown("<h3 style='font-size:20px;'>Diabetes Classification Model Evaluation</h3>", unsafe_allow_html=True)
 
 # Sidebar: Upload dataset and select model
-st.sidebar.header("1. Upload Dataset")
-uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type=["csv"])
-use_github_csv = st.sidebar.button("Use Github_repo test csv")
-if use_github_csv:
-    github_csv_url = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/Xy_test.csv"
-    response = requests.get(github_csv_url)
-    if response.status_code == 200:
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp_csv:
-            tmp_csv.write(response.content)
-            tmp_csv.flush()
-            uploaded_file = tmp_csv.name
-    else:
-        st.error("Failed to download example CSV from GitHub.")
-st.sidebar.header("Download Github CSV to local")
-csv_download_url = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/Xy_test.csv"
 with st.sidebar:
+    st.header("1. Upload Dataset")
+    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+    use_github_csv = st.button("Use Github_repo test csv")
+    if use_github_csv:
+        github_csv_url = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/Xy_test.csv"
+        response = requests.get(github_csv_url)
+        if response.status_code == 200:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as tmp_csv:
+                tmp_csv.write(response.content)
+                tmp_csv.flush()
+                uploaded_file = tmp_csv.name
+            st.success("Example CSV loaded from GitHub. Please proceed.")
+        else:
+            st.error("Failed to download example CSV from GitHub.")
+
+    st.header("Download Github CSV to local")
+    csv_download_url = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/Xy_test.csv"
     st.markdown(
         f'<a href="{csv_download_url}" download="Xy_test.csv" target="_blank">'
         '<button style="width:100%;">Download Example CSV</button></a>',
