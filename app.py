@@ -13,7 +13,7 @@ import tempfile
 import requests
 
 st.set_page_config(page_title="Diabetes Classification App", layout="centered")
-st.markdown("<h3 style='font-size:20px;'>Diabetes Classification Model Evaluation</h3>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size:20px;'>Diabetes Classification Model Evaluation</h2>", unsafe_allow_html=True)
 
 # Sidebar: Upload dataset and select model
 with st.sidebar:
@@ -42,7 +42,7 @@ with st.sidebar:
 # Use session state to persist the CSV file across reruns
 if 'github_csv_path' in st.session_state and st.session_state['github_csv_path']:
     uploaded_file = st.session_state['github_csv_path']
-    
+
 # List of available model files in the GitHub repo
 GITHUB_MODELS = [
     "Logistic_Regression_model.pkl",
@@ -54,7 +54,7 @@ GITHUB_MODELS = [
 ]
 GITHUB_BASE_URL = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/models/"
 
-st.sidebar.header("2. Select Model from GitHub(links are hard coded to repo)")
+st.sidebar.header("2. Select Model from GitHub (links are hard coded to repo)")
 selected_model_name = st.sidebar.selectbox("Choose Model", GITHUB_MODELS)
 
 def download_model_from_github(model_name):
@@ -87,7 +87,7 @@ if uploaded_file is not None and selected_model_path:
     # Remove any duplicate columns from the uploaded data
     df = df.loc[:, ~df.columns.duplicated()]
 
-    st.header("Features and Target")
+    st.markdown("<h4 style='font-size:16px;'>Features and Target</h4>", unsafe_allow_html=True)
     all_columns = df.columns.tolist()
     target_col = all_columns[-1]
     st.write(f"Target Column: {target_col}")
