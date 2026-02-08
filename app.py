@@ -123,7 +123,7 @@ if uploaded_file is not None and selected_model_path:
         model = joblib.load(selected_model_path)
 
         # Choose feature list based on model name
-        if selected_model_name == "logreg_model.pkl":
+        if selected_model_name == "Logistic_Regression_model.pkl":
             feature_list = Trainlist + list(poly_feature_names)
         else:
             feature_list = Trainlist
