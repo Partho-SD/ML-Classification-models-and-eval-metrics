@@ -64,27 +64,27 @@ V. Preprocessing and Cleaning
 
 # c. Models used
 
-| ML Model Name          | Accuracy | AUC  | Precision | Recall | F1   | MCC   |
-|------------------------|----------|------|-----------|--------|------|-------|
-| Logistic Regression    |          |      |           |        |      |       |
-| Decision Tree          |          |      |           |        |      |       |
-| kNN                    |          |      |           |        |      |       |
-| Naive Bayes            |          |      |           |        |      |       |
-| Random Forest(Ensemble)|          |      |           |        |      |       |
-| XGBoost (Ensemble)     |          |      |           |        |      |       |
+| ML Model Name          | Accuracy | AUC    | Precision | Recall | F1    | MCC   |
+|------------------------|----------|--------|-----------|--------|-------|-------|
+| Logistic Regression    |0.7227    |0.8239  |0.3066     |0.7848  |0.4409 |0.3596 |
+| Decision Tree          |0.7113    |0.8119  |0.2951     |0.7721  |0.4270 |0.3407 |
+| kNN                    |0.8338    |0.6866  |0.3633     |0.2562  |0.3005 |0.2135 |
+| Naive Bayes            |0.7209    |0.7801  |0.2933     |0.7116  |0.4151 |0.3177 |
+| Random Forest(Ensemble)|0.7226    |0.8203  |0.3048     |0.7737  |0.4373 |0.3535 |
+| XGBoost (Ensemble)     |0.7528    |0.8270  |0.3287     |0.7430  |0.4557 |0.3708 |
 
 -Observations on performance of each model
-| ML Model Name          | Observation about Model Performance                                                                |
-|------------------------|----------------------------------------------------------------------------------------------------|
-| Logistic Regression    |                                                                                                    |
-| Decision Tree          |                                                                                                    |
-| kNN                    |                                                                                                    |
-| Naive Bayes            |                                                                                                    |
-| Random Forest(Ensemble)|                                                                                                    |
-| XGBoost (Ensemble)     |                                                                                                    |
-
-
-
-        
-
-
+| ML Model Name          | Observation about Model Performance                                                                                          |
+|------------------------|------------------------------------------------------------------------------------------------------------------------------|
+| Logistic Regression    |Good balance of recall (0.78) and AUC (0.82), indicating strong ability to identify diabetics and good overall discrimination.|
+|                        |Precision is low, reflecting many false positives, but high recall aligns with the goal of early detection.                   |
+| Decision Tree          |Similar recall (0.77) to logistic regression but slightly lower AUC and F1, suggesting more overfitting and less robust       |
+|                        |generalization. Still prioritizes recall but at the cost of overall accuracy and precision.                                   |
+| kNN                    |Highest accuracy (0.83) but very low recall (0.26), meaning it misses most diabetic cases.                                    |
+|                        |High accuracy is misleading due to class imbalance; not suitable when recall is critical.                                     |
+| Naive Bayes            |Lower recall (0.71) and AUC (0.78) than logistic regression, with the lowest precision. Simple model, but underperforms       |
+|                        |compared to others, likely due to strong independence assumptions.                                                            |
+| Random Forest(Ensemble)|Recall (0.77) and AUC (0.82) are close to logistic regression, with slightly lower F1 and MCC. Handles non-linearities and    |
+|                        |interactions, but does not significantly outperform simpler models here.                                                      |
+| XGBoost (Ensemble)     |Best F1 (0.46) and MCC (0.37) among all, with high recall (0.74) and highest AUC (0.83). Offers the best trade-off between    |
+|                        |recall and precision, making it the most effective model for early detection in this context.                                 |
