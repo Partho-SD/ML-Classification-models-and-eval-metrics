@@ -47,21 +47,7 @@ def download_model_from_github(model_name):
 
 selected_model_path = download_model_from_github(selected_model_name)
 
-model_names = []
-if model_folder:
-    try:
-        pkl_files = [f for f in os.listdir(model_folder) if f.endswith(".pkl")]
-        if pkl_files:
-            selected_model_name = st.sidebar.selectbox("Choose Model", pkl_files)
-            selected_model_path = os.path.join(model_folder, selected_model_name)
-        else:
-            st.sidebar.info("No .pkl files found in the specified folder.")
-            selected_model_path = None
-    except Exception as e:
-        st.sidebar.error(f"Error accessing folder: {e}")
-        selected_model_path = None
-else:
-    selected_model_path = None
+# model_names and model_folder logic removed as models are now downloaded from GitHub
 
 def add_polynomial_features(X, non_binary_cols):
     poly = PolynomialFeatures(degree=2, include_bias=False)
