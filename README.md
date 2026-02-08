@@ -76,15 +76,9 @@ V. Preprocessing and Cleaning
 -Observations on performance of each model
 | ML Model Name          | Observation about Model Performance                                                                                          |
 |------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| Logistic Regression    |Good balance of recall (0.78) and AUC (0.82), indicating strong ability to identify diabetics and good overall discrimination.|
-|                        |Precision is low, reflecting many false positives, but high recall aligns with the goal of early detection.                   |
-| Decision Tree          |Similar recall (0.77) to logistic regression but slightly lower AUC and F1, suggesting more overfitting and less robust       |
-|                        |generalization. Still prioritizes recall but at the cost of overall accuracy and precision.                                   |
-| kNN                    |Highest accuracy (0.83) but very low recall (0.26), meaning it misses most diabetic cases.High accuracy is misleading due to  |
-|                        |class imbalance; not suitable when recall is critical. Takes most storage space and highest time for prediction.              |
-| Naive Bayes            |Lower recall (0.71) and AUC (0.78) than logistic regression, with the lowest precision. Simple model, but underperforms       |
-|                        |compared to others, likely due to strong independence assumptions.                                                            |
-| Random Forest(Ensemble)|Recall (0.77) and AUC (0.82) are close to logistic regression, with slightly lower F1 and MCC. Handles non-linearities and    |
-|                        |interactions, but does not significantly outperform simpler models here.                                                      |
-| XGBoost (Ensemble)     |Best F1 (0.46) and MCC (0.37) among all, with high recall (0.74) and highest AUC (0.83). Offers the best trade-off between    |
-|                        |recall and precision, making it the most effective model for early detection in this context.                                 |
+| Logistic Regression    |Good balance of recall (0.78) and AUC (0.82), indicating strong ability to identify diabetics and good overall discrimination.Precision is low, reflecting many false positives, but high recall aligns with the goal of early detection.                   |
+| Decision Tree          |Similar recall (0.77) to logistic regression but slightly lower AUC and F1, suggesting more overfitting and less robust generalization. Still prioritizes recall but at the cost of overall accuracy and precision.                                            |
+| kNN                    |Highest accuracy (0.83) but very low recall (0.26), meaning it misses most diabetic cases.High accuracy is misleading due to class imbalance; not suitable when recall is critical. Takes most storage space and highest time for prediction.                  |
+| Naive Bayes            |Lower recall (0.71) and AUC (0.78) than logistic regression, with the lowest precision. Simple model, but underperforms compared to others, likely due to strong independence assumptions.                                                                   |
+| Random Forest(Ensemble)|Recall (0.77) and AUC (0.82) are close to logistic regression, with slightly lower F1 and MCC. Handles non-linearities and interactions, but does not significantly outperform simpler models here.                                                           |
+| XGBoost (Ensemble)     |Best F1 (0.46) and MCC (0.37) among all, with high recall (0.74) and highest AUC (0.83). Offers the best trade-off between recall and precision, making it the most effective model for early detection in this context.                               |
