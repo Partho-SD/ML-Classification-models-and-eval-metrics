@@ -9,6 +9,8 @@ from sklearn.metrics import (
     roc_auc_score, confusion_matrix, classification_report
 )
 import matplotlib.pyplot as plt
+import tempfile
+import requests
 
 st.set_page_config(page_title="Diabetes Classification App", layout="centered")
 st.markdown("<h3 style='font-size:20px;'>Diabetes Classification Model Evaluation</h3>", unsafe_allow_html=True)
@@ -17,11 +19,33 @@ st.markdown("<h3 style='font-size:20px;'>Diabetes Classification Model Evaluatio
 st.sidebar.header("1. Upload Dataset")
 uploaded_file = st.sidebar.file_uploader("Upload your CSV file", type=["csv"])
 
-st.sidebar.header("2. Model_folder location")
-model_folder = st.sidebar.text_input(
-    "Enter folder path containing .pkl files (e.g., C:/models)",
-    value="C:\\Ddrive\\Bits\\sem1\\ML\\Assignment2\\ML-Classification-models-and-eval-metrics\\models"
-)
+# List of available model files in the GitHub repo
+GITHUB_MODELS = [
+    "Logistic_Regression_model",
+    "Decision_Tree_model.pkl",
+    "K_nearest_Neighbour_model.pkl",
+    "Gaussian_Naive_Bayes_model.pkl",
+    "Random_Forest_model.pkl",
+    "XgBoost_model.pkl"
+]
+GITHUB_BASE_URL = "https://github.com/Partho-SD/ML-Classification-models-and-eval-metrics/raw/main/models/"
+
+st.sidebar.header("2. Select Model from GitHub")
+selected_model_name = st.sidebar.selectbox("Choose Model", GITHUB_MODELS)
+
+def download_model_from_github(model_name):
+    url = GITHUB_BASE_URL + model_name
+    response = requests.get(url)
+    if response.status_code == 200:
+        temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pkl")
+        temp_file.write(response.content)
+        temp_file.close()
+        return temp_file.name
+    else:
+        st.error(f"Failed to download {model_name} from GitHub.")
+        return None
+
+selected_model_path = download_model_from_github(selected_model_name)
 
 model_names = []
 if model_folder:
